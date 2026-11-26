@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unemployment in the Philippines</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #e9edf0;
+    color: #253448;
+    line-height: 1.8;
+}
+
+/* MAIN BACKGROUND */
+
+.page {
+    max-width: 1050px;
+    margin: 45px auto;
+    background: #fffdf8;
+    box-shadow: 0 15px 55px rgba(20,40,65,0.16);
+    overflow: hidden;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 470px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 65px 75px;
+    color: white;
+    overflow: hidden;
+
+    background:
+    linear-gradient(90deg,
+    rgba(8,27,49,0.97) 0%,
+    rgba(13,42,70,0.88) 55%,
+    rgba(13,42,70,0.35) 100%),
+    url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=85");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    right: -60px;
+    width: 350px;
+    height: 350px;
+    border: 2px solid rgba(255,255,255,0.16);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 35px rgba(255,255,255,0.04),
+        0 0 0 75px rgba(255,255,255,0.04);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.tag {
+    display: inline-block;
+    border: 1px solid #c7a76b;
+    color: #e9cf9d;
+    padding: 7px 17px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 8vw, 82px);
+    line-height: 1.05;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    max-width: 590px;
+    color: #e0e7ef;
+    font-size: 16px;
+}
+
+/* SECTION LAYOUT */
+
+.content {
+    padding: 60px 70px;
+}
+
+.section-label {
+    color: #b18c4e;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #142f4d;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #173d60;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+p {
+    margin-bottom: 17px;
+    font-size: 15px;
+}
+
+/* INTRODUCTION */
+
+.intro {
+    border-left: 5px solid #c3a16a;
+    background: #f5f0e6;
+    padding: 28px 32px;
+    margin-bottom: 55px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* STATISTICS */
+
+.statistics {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 25px;
+    padding: 35px;
+    margin: 35px 0 55px;
+    background: #142f4d;
+    color: white;
+    border-radius: 12px;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    color: #e8c98d;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.statistics p {
+    color: #e1e9f0;
+    margin: 0;
+}
+
+.statistics strong {
+    color: white;
+}
+
+/* SOLUTIONS */
+
+.solutions {
+    margin-top: 55px;
+}
+
+.solution-card {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 28px;
+    margin: 20px 0;
+    border: 1px solid #e1e5e8;
+    background: #f7f9fa;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(20,47,77,0.10);
+}
+
+.number {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #173d60;
+    color: #f1d49b;
+    border-radius: 50%;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.solution-card p {
+    margin-bottom: 0;
+}
+
+/* CONCLUSION */
+
+.conclusion {
+    margin-top: 55px;
+    padding: 35px;
+    background: #eaf0f5;
+    border-radius: 12px;
+    border-bottom: 4px solid #c3a16a;
+}
+
+/* CLOSING MESSAGE */
+
+.closing {
+    text-align: center;
+    margin-top: 35px;
+    padding: 45px 35px;
+    background: #142f4d;
+    color: white;
+}
+
+.closing h2 {
+    color: #e8c98d;
+    font-size: 29px;
+}
+
+.closing p {
+    max-width: 650px;
+    margin: auto;
+    color: #e5edf4;
+}
+
+/* REFERENCES */
+
+.references {
+    margin-top: 55px;
+    padding: 32px;
+    background: #f5f0e6;
+    border-radius: 12px;
+}
+
+.references h2 {
+    font-size: 25px;
+}
+
+.references ol {
+    padding-left: 23px;
+}
+
+.references li {
+    font-size: 13px;
+    margin-bottom: 17px;
+    overflow-wrap: anywhere;
+}
+
+.references a {
+    color: #315f87;
+    text-decoration: none;
+}
+
+.references a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+
+footer {
+    background: #0b223b;
+    color: #cbd7e2;
+    padding: 22px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE DESIGN */
+
+@media(max-width: 700px) {
+    .page {
+        margin: 10px;
+    }
+
+    .hero {
+        padding: 55px 30px;
+        min-height: 400px;
+    }
+
+    .content {
+        padding: 35px 23px;
+    }
+
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-card {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-number {
+        font-size: 48px;
+    }
+}
+
+/* PRINT DESIGN */
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .page {
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .hero, .statistics, .closing, footer {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- COVER -->
+
+<header class="hero">
+    <div class="hero-content">
+<span class="tag">Philippine Social Issue</span>   <!-- above the <h1> -->
+
+<div class="facts">                                 <!-- below the About section -->
+  <div class="fact"><strong>5.4%</strong><span>Unemployment rate</span></div>
+  <div class="fact"><strong>2.86M</strong><span>Jobless Filipinos</span></div>
+  <div class="fact"><strong>Sept 2026</strong><span>PSA data</span></div>
+</div>
+        <h1>UNEMPLOYMENT</h1>
+
+        <p>
+        Understanding the challenges of unemployment,
+        its effects on Filipino families, and the importance
+        of creating fair and equal employment opportunities.
+        </p>
+    </div>
+</header>
+
+<main class="content">
+
+<!-- INTRODUCTION -->
+
+<div class="section-label">01 / Introduction</div>
+
+<h2>Understanding Unemployment</h2>
+
+<div class="intro">
+<p>
+Based on our research about unemployment, is one of the problems affecting the Philippines. It happens when people who are willing and able to work cannot find jobs. This does not only affect unemployed individuals but also their families, communities, and the country’s economy.
+</p>
+</div>
+
+<!-- THE PROBLEM -->
+
+<div class="section-label">02 / The Situation</div>
+
+<h2>The Problem Behind Unemployment</h2>
+
+<p>
+There are many reasons why unemployment happens. These include a lack of job opportunities, limited education, skills that do not match available jobs, and economic difficulties. According to the Philippine Statistics Authority (PSA), around 2.86 million Filipinos were unemployed in September 2026, representing an unemployment rate of 5.4%. This shows that unemployment remains an issue that needs attention.
+</p>
+
+<div class="statistics">
+
+    <div class="stat-number">5.4%</div>
+
+    <div>
+        <h3 style="color:#e8c98d;">
+        Unemployment Rate
+        </h3>
+
+        <p>
+        According to the Philippine Statistics Authority,
+        around <strong>2.86 million Filipinos</strong> were
+        unemployed in September 2026.
+        </p>
+    </div>
+
+</div>
+
+<!-- IMPORTANCE -->
+
+<div class="section-label">03 / Our Perspective</div>
+
+<h2>Why It Matters</h2>
+
+<p>
+I believe unemployment should be addressed through better education, fair job opportunities, and government support. Everyone deserves a chance to earn a living and support their families. Having a job is not just about earning money; it is also about dignity, responsibility, and providing a better future for oneself and one’s family.
+</p>
+
+<!-- SOLUTIONS -->
+
+<div class="solutions">
+
+<div class="section-label">04 / Possible Solutions</div>
+
+<h2>Ways to Address Unemployment</h2>
+
+<div class="solution-card">
+
+    <div class="number">01</div>
+
+    <div>
+        <h3>Improve Education and Skills Training</h3>
+
+        <p>
+        First, education and skills training should be improved so people can qualify for available jobs. According to the World Bank, developing skills that match the needs of modern industries is important for improving employment opportunities. Schools and training centers should help prepare students for the workplace. This promotes the value of responsibility because people are encouraged to learn and prepare for their future.
+        </p>
+    </div>
+
+</div>
+
+<div class="solution-card">
+
+    <div class="number">02</div>
+
+    <div>
+        <h3>Create More Job Opportunities</h3>
+
+        <p>
+        Second, the government should create more job opportunities by supporting small businesses, attracting investors, and developing local industries. The World Bank’s Philippine Jobs Report highlights the importance of creating better jobs to reduce poverty and strengthen the economy. These efforts also show compassion and concern for others, especially families who struggle to provide for their everyday needs.
+        </p>
+    </div>
+
+</div>
+
+<div class="solution-card">
+
+    <div class="number">03</div>
+
+    <div>
+        <h3>Treat Workers Fairly</h3>
+
+        <p>
+        Third, companies should treat their workers fairly by providing proper wages, safe working conditions, and equal opportunities. The Department of Labor and Employment’s Labor Code outlines important rules regarding wages, working hours, and employee protection. This reminds businesses that workers deserve fair treatment and respect. Companies should practice justice, equality, and respect for human dignity instead of treating workers unfairly.
+        </p>
+    </div>
+
+</div>
+
+<div class="solution-card">
+
+    <div class="number">04</div>
+
+    <div>
+        <h3>Show Understanding and Support</h3>
+
+        <p>
+        Lastly, individuals should continue learning new skills and stay determined even when finding a job becomes difficult. However, society should not immediately blame unemployed people because not everyone has access to the same opportunities and resources. The Department of Labor and Employment’s Institute for Labor Studies also discusses problems such as skills mismatch and difficulties connecting job seekers with employers. We should practice understanding, patience, and solidarity in our daily lives to help people who are struggling.
+        </p>
+    </div>
+
+</div>
+
+</div>
+
+<!-- CONCLUSION -->
+
+<div class="conclusion">
+
+<div class="section-label">05 / Final Thoughts</div>
+
+<h2>Conclusion</h2>
+
+<p>
+In conclusion, unemployment is a serious problem that affects individuals, families, and the entire economy. It makes it harder for people to support themselves, increases the risk of poverty, and prevents many individuals from using their abilities to contribute to society.
+</p>
+
+<p>
+Solving this issue requires cooperation between the government, businesses, schools, and individuals. Each group has an important role in creating a society where everyone has a fair chance to find work and improve their lives.
+</p>
+
+<p>
+The government should provide employment programs, businesses should offer fair working conditions, and schools should equip students with useful skills. These efforts can help create more opportunities and build a stronger economy.
+</p>
+
+<p>
+We must also remember that unemployed individuals deserve respect and understanding. A person’s worth should never be measured by their employment status or financial situation. Everyone deserves fair treatment, dignity, and the opportunity to build a better life.
+</p>
+
+<p>
+Ultimately, having a job is not just about earning money. It is also about dignity, opportunity, and responsibility. By practicing fairness, compassion, honesty, and cooperation, we can help build a society where everyone has a chance to work toward a better future.
+</p>
+
+</div>
+
+<!-- CLOSING -->
+
+<div class="closing">
+
+<h2>Every Person Deserves a Chance.</h2>
+
+<p>
+Together, we can help build a society where everyone
+has the opportunity to work, support their families,
+and create a better future.
+</p>
+
+</div>
+
+<!-- REFERENCES -->
+
+<div class="references">
+
+<div class="section-label">06 / Sources</div>
+
+<h2>Research References</h2>
+
+<ol>
+
+<li>
+<strong>Philippine Statistics Authority (PSA).</strong>
+Labor Force Survey – Statistics and Latest Releases.
+<br>
+<a href="https://psa.gov.ph/statistics/labor-force-survey/node/1684084287">
+https://psa.gov.ph/statistics/labor-force-survey/node/1684084287
+</a>
+</li>
+
+<li>
+<strong>Philippine Statistics Authority (PSA).</strong>
+September 2026 Labor Force Survey – Employment and Unemployment Statistics.
+<br>
+<a href="https://psa.gov.ph/content/number-employed-persons-rose-5032-million-underemployment-declined-september-2026">
+View PSA Reference
+</a>
+</li>
+
+<li>
+<strong>World Bank.</strong>
+Philippine Jobs Report: Shaping a Better Future for the Filipino Workforce.
+<br>
+<a href="https://www.worldbank.org/en/country/philippines/publication/philippine-jobs-report-shaping-a-better-future-for-the-filipino-workforce">
+View World Bank Report
+</a>
+</li>
+
+<li>
+<strong>World Bank.</strong>
+Report Highlights for Labor Market Review Report.
+<br>
+<a href="https://www.worldbank.org/en/country/philippines/publication/report-highlights-for-labor-market-review-report">
+View Report
+</a>
+</li>
+
+<li>
+<strong>Department of Labor and Employment – Institute for Labor Studies (DOLE-ILS).</strong>
+The Role of Job Placement Offices in Public Employment Services (2025).
+<br>
+<a href="https://ils.dole.gov.ph/research-papers/2025-research-papers/the-role-of-job-placement-offices-jpos-in-public-employment-services-a-five-clustered-diagnostic/">
+View Research
+</a>
+</li>
+
+<li>
+<strong>Department of Labor and Employment (DOLE).</strong>
+The Labor Code of the Philippines – Working Conditions and Employee Protection.
+<br>
+<a href="https://dole.gov.ph/labor-code-of-the-philippines-2/">
+View Labor Code
+</a>
+</li>
+
+</ol>
+</div>
+
+</main>
+
+<footer>
+UNEMPLOYMENT IN THE PHILIPPINES
+<br>
+A RESEARCH AND AWARENESS PROJECT
+</footer>
+
+</div>
+
+</body>
+</html>
